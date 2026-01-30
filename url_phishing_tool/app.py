@@ -9,7 +9,13 @@ st.set_page_config(page_title="URL Phishing Detector", page_icon="🔎")
 st.title("🔎 URL Phishing Detector")
 st.write("Paste a URL to check whether it is **Safe** or **Phishing / Malicious**.")
 
-model = joblib.load("models/url_model.joblib")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "url_model.joblib")
+
+model = joblib.load(MODEL_PATH)
+
 
 FEATURE_COLS = [
     "url_length", "valid_url", "at_symbol", "sensitive_words_count", "path_length",
@@ -39,3 +45,4 @@ if st.button("Analyze"):
 
         with st.expander("Show extracted features"):
             st.write(feats)
+
