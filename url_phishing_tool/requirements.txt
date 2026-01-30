@@ -1,5 +1,6 @@
-numpy
+streamlit>=1.32
 pandas
 scikit-learn
 joblib
-streamlit
+numpy<2
+altair>=5
